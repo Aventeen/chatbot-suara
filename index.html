@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>ChatBot Lokal Pintar</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f0f0f0; }
+    #chatbox { width: 100%; padding: 10px; font-size: 16px; }
+    #output { margin-top: 20px; font-size: 18px; background: white; padding: 10px; border-radius: 5px; min-height: 60px; }
+    button { margin-top: 10px; padding: 10px 20px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h2>ChatBot Lokal Pintar 🧠🔊</h2>
+  <input type="text" id="chatbox" placeholder="Tulis pertanyaan kamu di sini...">
+  <button onclick="sendChat()">Kirim</button>
+  <div id="output">Menunggu pertanyaan kamu...</div>
+
+  <script>
+    function speak(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "id-ID";
+      speechSynthesis.speak(utterance);
+    }
+
+    function sendChat() {
+      const input = document.getElementById("chatbox").value.toLowerCase().trim();
+      const output = document.getElementById("output");
+      let reply = "Maaf, aku belum ngerti pertanyaan itu.";
+
+      // Deteksi kata kunci & logika pintar-pintaran
+      if (input.includes("halo") || input.includes("hai")) {
+        reply = "Halo juga! Ada yang bisa saya bantu?";
+      } else if (input.includes("siapa kamu")) {
+        reply = "Saya chatbot lokal pintar buatan Bro Tukang Elite!";
+      } else if (input.includes("apa kabar")) {
+        reply = "Saya selalu baik, terima kasih! Kamu gimana?";
+      } else if (input.includes("siapa presiden indonesia")) {
+        reply = "Presiden Indonesia saat ini adalah Joko Widodo.";
+      } else if (input.includes("berapa") && input.includes("tambah")) {
+        const nums = input.match(/\d+/g);
+        if (nums && nums.length >= 2) {
+          const result = parseInt(nums[0]) + parseInt(nums[1]);
+          reply = `Hasilnya adalah ${result}`;
+        }
+      } else if (input.includes("cuaca")) {
+        reply = "Maaf, saya tidak terhubung ke internet jadi tidak bisa cek cuaca 😅";
+      } else if (input.includes("terima kasih")) {
+        reply = "Sama-sama, senang bisa bantu!";
+      } else if (input.includes("kamu bisa apa")) {
+        reply = "Saya bisa menjawab pertanyaan sederhana dan mengeluarkan suara. Cobain aja!";
+      }
+
+      output.innerText = reply;
+      speak(reply);
+    }
+  </script>
+</body>
+</html>
