@@ -9,12 +9,8 @@
     #output { margin-top: 20px; font-size: 18px; background: white; padding: 10px; border-radius: 5px; min-height: 60px; }
     button { margin-top: 10px; padding: 10px 20px; font-size: 16px; }
   </style>
-  <audio autoplay loop>
-    <source src="data:audio/mpeg;base64,//NkxAAAAANIAAAAAExBT...qqqqqqqqqqqqqqqq" type="audio/mpeg">
-    Browser kamu tidak mendukung audio tag.
-  </audio>
-</body>
-</html>
+</head>
+<body>
   <h2>ChatBot Lokal Pintar 🧠🔊</h2>
   <input type="text" id="chatbox" placeholder="Tulis pertanyaan kamu di sini...">
   <button onclick="sendChat()">Kirim</button>
@@ -53,10 +49,8 @@
         reply = "Sama-sama, senang bisa bantu!";
       } else if (input.includes("kamu bisa apa")) {
         reply = "Saya bisa menjawab pertanyaan sederhana dan mengeluarkan suara. Cobain aja!";
-      } else if (input.includes("tes")) {
-  const balasan = ["oke normal bro2"];
-  reply = balasan[Math.floor(Math.random() * balasan.length)];
-}
+      } else if (input.includes("ok apa normal")) {
+        reply = "oke normal bos!";
 
       output.innerText = reply;
       speak(reply);
