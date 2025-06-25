@@ -59,7 +59,10 @@
         reply = "Sama-sama, senang bisa bantu!";
       } else if (input.includes("kamu bisa apa")) {
         reply = "Saya bisa menjawab pertanyaan sederhana dan mengeluarkan suara. Cobain aja!";
-      }
+      } else if (input.includes("test")) {
+  const balasan = ["Aku baik!", "ok normal bro satu"];
+  reply = balasan[Math.floor(Math.random() * balasan.length)];
+}
 
       output.innerText = reply;
       speak(reply);
