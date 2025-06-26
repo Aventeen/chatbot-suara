@@ -35,8 +35,8 @@
         reply = "Saya chatbot lokal pintar buatan Bro Tukang Elite!";
       } else if (input.includes("apa kabar")) {
         reply = "Saya selalu baik, terima kasih! Kamu gimana?";
-      } else if (input.includes("ada menu apa hari ini")) {
-        reply = "menu hari ini ada,mie ayam ada,bakso ada,sate ada, ikan bakar juga ada kamu mau makan apa hahah tapi bayar";
+      } else if (input.includes("siapa presiden indonesia")) {
+        reply = "Presiden Indonesia saat ini adalah Joko Widodo.";
       } else if (input.includes("berapa") && input.includes("tambah")) {
         const nums = input.match(/\d+/g);
         if (nums && nums.length >= 2) {
@@ -53,9 +53,6 @@
         reply = "ok normal bos.";
     }   else if (input.includes("gue makan apa tadi")) {
         reply = "lu makan tempe tahu doank hahaha.";
-    }reply = "ok normal bos.";
-    }   else if (input.includes("apa yang belum tuntas")) {
-        reply = "coc,the the top, untuk saat ini";
     }
 
       output.innerText = reply;
