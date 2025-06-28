@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta charset="UTF-8">
-  <title>ChatBot Lokal Pintar</title>
+  <title>ChatBot Background Warna</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -67,41 +66,56 @@
       min-height: 60px;
     }
 
-    button {
-      margin-top: 10px;
+    .btn-warna {
+      margin: 5px;
       padding: 10px 20px;
-      font-size: 16px;
+      font-size: 14px;
       cursor: pointer;
+      border: none;
+      border-radius: 6px;
     }
+
+    .warna-container {
+      margin-top: 10px;
+    }
+
   </style>
 </head>
 <body>
 
   <!-- VIDEO BACKGROUND -->
   <video autoplay muted loop id="bgVideo">
-    <source src="kucing.mp4" type="video/mp4"> <!-- GANTI INI BRO: ganti "video.mp4" ke nama file video lo -->
+    <source src="kucing.mp4" type="video/mp4"> <!-- GANTI INI BRO: nama video -->
   </video>
 
   <div id="overlay"></div>
 
   <!-- CHATBOT KONTEN -->
   <div class="content">
-    <h2>ChatBot Lokal Pintar 🗿🧠🔊</h2>
+    <h2>ChatBot Bro Elite 🗿</h2>
     <input type="text" id="chatbox" placeholder="Tulis pertanyaan kamu di sini...">
     <button onclick="sendChat()">Kirim</button>
     <div id="output">Menunggu pertanyaan kamu...</div>
+
+    <!-- PILIH WARNA BACKGROUND -->
+    <div class="warna-container" id="warnaPanel" style="display: none;">
+      <p>Pilih Warna Background:</p>
+      <button class="btn-warna" style="background: #fff7fe;" onclick="gantiWarna('#000')">Hitam</button>
+      <button class="btn-warna" style="background: #f2faf9;" onclick="gantiWarna('#f2faf9')">putih</button>
+      <button class="btn-warna" style="background: #f2faf9;" onclick="gantiWarna('#3e255e')">Ungu</button>
+      <button class="btn-warna" style
+      <button class="btn-warna" style="background: #fff7fe;" onclick="gantiWarna('#277ba8')">biru</button>
+    </div>
   </div>
 
   <script>
-    // GANTI INI BRO: pilih mode latar: "video", "image", atau "none"
-    const backgroundMode = "image";
-
-    // GANTI INI BRO: masukkan link gambar background kalau pakai mode "image"
-    const imageBackgroundURL = "https://t4.ftcdn.net/jpg/02/62/70/36/360_F_262703656_jyHVAIM4cMHVo3WLYe2o3ejxjcRWNoBS.jpg";
+    const backgroundMode = "none"; // GANTI INI BRO: "video", "image", atau "none"
+    const imageBackgroundURL = "https://i.postimg.cc/HLrZbgMs/reward-chest-coc.png";
 
     const bgVideo = document.getElementById("bgVideo");
+    const warnaPanel = document.getElementById("warnaPanel");
 
-    // INI BAGIAN YANG AKTIFIN MODE-NYA
+    // Terapkan mode background
     if (backgroundMode === "video") {
       bgVideo.style.display = "block";
       document.body.style.backgroundImage = "none";
@@ -111,7 +125,12 @@
     } else if (backgroundMode === "none") {
       bgVideo.style.display = "none";
       document.body.style.backgroundImage = "none";
-      document.body.style.backgroundColor = "#00ff00"; // GANTI INI BRO: kalau mau warna selain hitam
+      document.body.style.backgroundColor = "#000"; // Default
+      warnaPanel.style.display = "block"; // Tampilkan tombol warna
+    }
+
+    function gantiWarna(warna) {
+      document.body.style.backgroundColor = warna;
     }
 
     function speak(text) {
@@ -148,7 +167,7 @@
       } else if (input.includes("ok apa normal")) {
         reply = "ok normal bos.";
       } else if (input.includes("apa yang belum tuntas")) {
-        reply = "coc jangan lupa terus , laptop Lo rusak jadi perbaiki..";
+        reply = "COC jangan lupa terus , laptop Lo rusak jadi perbaiki..";
       }
 
       output.innerText = reply;
